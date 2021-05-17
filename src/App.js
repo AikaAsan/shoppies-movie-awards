@@ -23,7 +23,7 @@ function App() {
       return
     }
     console.log('searchValue:', searchValue);
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=2a3b70b5&type=movie`;
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=2a3b70b5&type=movie`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
