@@ -5,3 +5,8 @@
 span {
     font-size: 30px !important;
 }
+
+.text {
+    margin-left: 15px;
+    color: black;
+}
