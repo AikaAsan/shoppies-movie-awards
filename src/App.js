@@ -45,7 +45,7 @@ function App() {
 
 
   useEffect(() => {
-    (nominations.length >= 5 ? setShowBanner(true) : setShowBanner(false))
+    (nominations?.length >= 5 ? setShowBanner(true) : setShowBanner(false))
   }, [nominations]);
 
 
