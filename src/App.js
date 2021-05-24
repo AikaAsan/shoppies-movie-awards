@@ -9,11 +9,14 @@ import Banner from 'react-js-banner';
 import Header from './components/Header/Header';
 
 
+// const row = {
+
+// }
 
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('day');
   const [nominations, setNominations] = useState([]);
   const [showBanner, setShowBanner] = useState(false);
 
@@ -23,7 +26,7 @@ function App() {
       return
     }
     console.log('searchValue:', searchValue);
-    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=2a3b70b5&type=movie`;
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=${process.env.REACT_APP_API_KEY}&type=movie`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -55,15 +58,13 @@ function App() {
   }
 
   const addToNominations = (movie) => {
-    console.log('addToNominations:', nominations)
-    let newNominations
+    let newNominations;
     if (nominations) {
       newNominations = [...nominations, movie];
     } else {
       newNominations = [movie]
     }
     setNominations(newNominations);
-
     saveToLocalStorage(newNominations);
   }
 
@@ -71,19 +72,17 @@ function App() {
     const newNominations = nominations.filter((nomination) =>
       nomination.imdbID !== movie.imdbID);
     setNominations(newNominations);
-
     saveToLocalStorage(newNominations);
   }
 
 
   return (
     <>
-      <div className="container-fliud main">
+      <div className="container-fluid main">
         <Header />
         <Banner
           showBanner={showBanner}
           title="You have added 5 nominations to the list!"
-        // visibleTime={3000} />
         />
         <SearchInput searchValue={searchValue}
           setSearchValue={setSearchValue} />
@@ -113,7 +112,6 @@ function App() {
               handleNominationsClick={removeFromNominations} />
           </div>
         </div>
-
       </div>
     </>
   );

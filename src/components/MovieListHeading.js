@@ -3,7 +3,7 @@ import React from 'react';
 
 const MovieListHeading = (props) => {
     return (
-        <h3>{`${props.heading}`}</h3>
+        <h3>{`${props.heading} ${props.searchValue}`}</h3>
     )
 }
 

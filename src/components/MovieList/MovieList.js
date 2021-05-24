@@ -24,15 +24,18 @@ const MovieList = (props) => {
 
     const { type } = props
     const text = type === 'add' ? 'Nominate' : 'remove'
-    if (props.movies?.length > 0) {
-        return (
+
+
+    return props.movies?.length > 0 ?
+        (
             <>
                 {props.movies.map((movie, index) => (
-                    <div className='image-container d-flex justify-content-start m-2'>
-                        <img className="poster" src={movie.Poster} alt='movie'></img>
-
-                        {/* <AddToNominations /> */}
-
+                    <div className='image-container d-flex justify-content-start m-2'
+                        key={index}>
+                        <img
+                            className="poster"
+                            src={movie.Poster} alt='movie'>
+                        </img>
                         <div
                             className='overlay'
                         >
@@ -42,10 +45,7 @@ const MovieList = (props) => {
                     </div>
                 ))}
             </>
-        );
-    }
-
-    return null
+        ) : null;
 
 };
 
