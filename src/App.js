@@ -9,12 +9,20 @@ import Banner from 'react-js-banner';
 import Header from './components/Header/Header';
 
 
-// const row = {
-
-// }
 
 function App() {
 
+  const styles = {
+    placeholder: {
+      height: '300px'
+    },
+    row: {
+      overflowX: 'auto',
+      flexWrap: 'nowrap',
+      bootstrap: 'd - flex align- items - center mt- 4 ml-0 mr - 0 mb - 4'
+    },
+
+  }
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('day');
   const [nominations, setNominations] = useState([]);
@@ -25,7 +33,6 @@ function App() {
     if (searchValue === '') {
       return
     }
-    console.log('searchValue:', searchValue);
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=${process.env.REACT_APP_API_KEY}&type=movie`;
 
     const response = await fetch(url);

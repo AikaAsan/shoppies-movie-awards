@@ -25,12 +25,11 @@ const MovieList = (props) => {
     const { type } = props
     const text = type === 'add' ? 'Nominate' : 'remove'
 
-
     return props.movies?.length > 0 ?
         (
             <>
                 {props.movies.map((movie, index) => (
-                    <div className='image-container d-flex justify-content-start m-2'
+                    <li className='image-container d-flex justify-content-start m-2'
                         key={index}>
                         <img
                             className="poster"
@@ -42,7 +41,7 @@ const MovieList = (props) => {
                             <p>{movie.Title}</p>
                             {renderButton(props.nominated, movie, props.handleNominationsClick, text)}
                         </div>
-                    </div>
+                    </li>
                 ))}
             </>
         ) : null;
