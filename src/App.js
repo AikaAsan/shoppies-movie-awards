@@ -1,28 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import MovieList from './components/MovieList/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchInput from './components/SearchInput/SearchInput'
 import Banner from 'react-js-banner';
 import Header from './components/Header/Header';
+import filmActionEnum from './Types/filmActionsEnum'
 
 
 
 function App() {
 
-  const styles = {
-    placeholder: {
-      height: '300px'
-    },
-    row: {
-      overflowX: 'auto',
-      flexWrap: 'nowrap',
-      bootstrap: 'd - flex align- items - center mt- 4 ml-0 mr - 0 mb - 4'
-    },
-
-  }
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('day');
   const [nominations, setNominations] = useState([]);
@@ -85,7 +73,7 @@ function App() {
 
   return (
     <>
-      <div className="container-fluid main">
+      <div className="container mx-auto">
         <Header />
         <Banner
           showBanner={showBanner}
@@ -96,28 +84,24 @@ function App() {
         <MovieListHeading
           heading="Search results:"
           searchValue={searchValue} />
-        <div className="placeholder">
-          <div className="row d-flex align-items-center mt-4 ml-0 mr-0 mb-4">
-            <MovieList
-              type="add"
-              movies={movies}
-              nominated={nominations}
-              heading="Nominate"
-              handleNominationsClick={addToNominations}
-            />
-          </div>
-        </div>
+        <div className="">
 
+          <MovieList
+            type={filmActionEnum.ADD_NOMINATION}
+            movies={movies}
+            nominated={nominations}
+            heading="Nominate"
+            handleNominationsClick={addToNominations}
+          />
+        </div>
         <MovieListHeading
           heading="Nominations:" />
-        <div className="placeholder">
-          <div className="row d-flex align-items-center mt-4 ml-0 mr-0 mb-4">
-            <MovieList
-              type="remove"
-              movies={nominations}
-              heading="Remove"
-              handleNominationsClick={removeFromNominations} />
-          </div>
+        <div className="">
+          <MovieList
+            type={filmActionEnum.REMOVE_NOMINATION}
+            movies={nominations}
+            heading="Remove"
+            handleNominationsClick={removeFromNominations} />
         </div>
       </div>
     </>

@@ -1,15 +1,19 @@
 import React from 'react';
-import './Header.css'
 
 const Header = () => {
     return (
-        <>
-            <nav class="navbar navbar-light bg-color ">
-                <span class="navbar-brand mb-0 h1">Shoppies Awards</span>
-            </nav>
-            <h5 className="text">Browse and save 5 of your favourite movies for the Shoppies Nominations!</h5>
-
-        </>
+        <div className=" border-b border-gray-200 mt-6">
+            <div className="sm:flex sm:justify-between sm:items-baseline">
+                <div className="sm:w-0 sm:flex-1">
+                    <h1 id="message-heading" className="text-3xl font-medium text-gray-900">
+                        Shoppies Awards
+                    </h1>
+                    <p className=" text-lg text-gray-500 overflow-hidden overflow-ellipsis">
+                        Browse and save 5 of your favorite movies for the Shoppies Nominations!
+                    </p>
+                </div>
+            </div>
+        </div>
     )
 }
 
